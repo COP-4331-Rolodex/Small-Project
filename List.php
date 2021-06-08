@@ -67,11 +67,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
         function sendResultInfoAsJson( $obj )
         {
                 header('Content-type: application/json');
-                $length = count($obj);
-                for ($i = 0; $i < $length; $i++) {
-                echo $obj[$i];
-                echo "\r\n";
-                }
+
         }
 
         function returnWithError( $err )
