@@ -4,6 +4,10 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
 
+ini_set('max_execution_time', '0');
+ini_set('memory_limit', '536870912');
+ini_set('max_input_time', '-1');
+
     error_reporting(E_ALL); // reports all errors
     ini_set("display_errors", "1"); // shows all errors
     ini_set("log_errors", 1);
@@ -62,14 +66,17 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
                 $result = $stmt->get_result();
 
-		$searchResults = array();
+		//$searchResults = array();
+                $searchResults = "{results : [";
 
                 while($row = $result->fetch_assoc())
                 {
-			$searchResults[$searchCount] = $row["first_name"]. ' ' . $row["last_name"]. ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"];
-			$searchCount++;
+			//$searchResults[$searchCount] = $row["first_name"]. ' ' . $row["last_name"]. ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"];
+			$searchResults .= "\"" . $row["first_name"] . ' ' . $row["last_name"] . ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"] . '\", ';
+                        $searchCount++;
                 }
 
+                $searchResults .= "] error: }";
                 //$length = count($searchResults);
 
                 if( $searchCount == 0 )
