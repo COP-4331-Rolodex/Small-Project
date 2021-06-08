@@ -46,6 +46,9 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
                         $searchCount++;
                 }
 
+                $stmt->close();
+                $conn->close();
+
                 if( $searchCount == 0 )
                 {
                         returnWithError( "No Records Found" );
@@ -55,8 +58,6 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
                         sendResultInfoAsJson( $searchResults );
                 }
 
-                $stmt->close();
-                $conn->close();
         }
 
         function getRequestInfo()
@@ -67,6 +68,12 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
         function sendResultInfoAsJson( $obj )
         {
                 header('Content-type: application/json');
+                $length = count($obj);
+                for ($i = 0; $i < $length; $i++) {
+                        echo $obj[$i];
+                        echo "\r\n";
+                }
+                //var_dump($obj);
 
         }
 
