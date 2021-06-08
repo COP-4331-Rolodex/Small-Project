@@ -27,13 +27,13 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
         }
         else
         {
-       // $id = 1;
-       // $name = dac;
+        //$id = 129;
+        //$name = "a";
 
         //$parts = explode(" ", $name);
         $parts = explode(" ", $inData["name"]);
         if(count($parts) > 1) {
-           // list($first, $last) = explode(" ", $name);
+            //list($first, $last) = explode(" ", $name);
             list($first, $last) = explode(" ", $inData["name"]);
 
             $stmt = $conn->prepare("SELECT * from contacts where first_name like ? and last_name like ? and owner_id=?");
@@ -50,11 +50,11 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
         else{
             $stmt = $conn->prepare("SELECT * from contacts where (first_name like ? or last_name like ?) and owner_id=?");
 
+            $first_name = "%" . $inData["name"] . "%";
+            $last_name = "%" . $inData["name"] . "%";
             //$first_name = "%" . $name . "%";
             //$last_name = "%" . $name . "%";
-            //$parts = explode(" ", $inData["name"]);
-            $stmt->bind_param("ssi", $parts[0], $parts[0], $inData["id"]);
-            //$stmt->bind_param("ssi", $first_name, $last_name, $inData["id"]);
+            $stmt->bind_param("ssi", $first_name, $last_name, $inData["id"]);
             //$stmt->bind_param("ssi", $first_name, $last_name, $id);
 
             $stmt->execute();
@@ -62,13 +62,15 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
                 $result = $stmt->get_result();
 
-				$searchResults = array();
+		$searchResults = array();
 
                 while($row = $result->fetch_assoc())
                 {
-					$searchResults[$searchCount] = $row["first_name"]. ' ' . $row["last_name"]. ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"];
-					$searchCount++;
+			$searchResults[$searchCount] = $row["first_name"]. ' ' . $row["last_name"]. ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"];
+			$searchCount++;
                 }
+
+                //$length = count($searchResults);
 
                 if( $searchCount == 0 )
                 {
@@ -91,11 +93,12 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
         function sendResultInfoAsJson( $obj )
         {
                 header('Content-type: application/json');
-				$length = count($obj);
-                for ($i = 0; $i < $length; $i++) {
-                echo $obj[$i];
-                echo "\r\n";
-                }
+		//$length = count($obj);
+                //for ($i = 0; $i < $length; $i++) {
+                //echo $obj[$i];
+                //echo "\r\n";
+                //}
+                sendResultInfoAsJson( $obj );
         }
 
         function returnWithError( $err )
