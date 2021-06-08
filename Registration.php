@@ -26,10 +26,9 @@ ini_set("error_log", "/tmp/php-error.log");
         else
         {
 
-                $conn->query("SET @in_name='$inData[name]';");
+		$conn->query("SET @in_name='$inData[name]';");
                 $conn->query("SET @in_username='$inData[username]';");
-                $hashedPwd = md5($inData['password']);
-                $conn->query("SET @in_password='$hashedPwd';");
+                $conn->query("SET @in_password='$inData[password]';");
 
                 $conn->query("CALL `Create_user`(@in_name, @in_username, @in_password);");
 
