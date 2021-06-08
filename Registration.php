@@ -26,7 +26,7 @@ ini_set("error_log", "/tmp/php-error.log");
         else
         {
 
-                $conn->query("SET @in_username='$inData[name]';");
+                $conn->query("SET @in_name='$inData[name]';");
                 $conn->query("SET @in_username='$inData[username]';");
                 $hashedPwd = md5($inData['password']);
                 $conn->query("SET @in_password='$hashedPwd';");
