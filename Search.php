@@ -4,10 +4,6 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
 
-ini_set('max_execution_time', '0');
-ini_set('memory_limit', '536870912');
-ini_set('max_input_time', '-1');
-
     error_reporting(E_ALL); // reports all errors
     ini_set("display_errors", "1"); // shows all errors
     ini_set("log_errors", 1);
@@ -56,8 +52,8 @@ ini_set('max_input_time', '-1');
 
             $first_name = "%" . $inData["name"] . "%";
             $last_name = "%" . $inData["name"] . "%";
-            //$first_name = "%" . $name . "%";
-            //$last_name = "%" . $name . "%";
+            //$parts = explode(" ", $inData["name"]);
+            //$stmt->bind_param("ssi", $parts[0], $parts[0], $inData["id"]);
             $stmt->bind_param("ssi", $first_name, $last_name, $inData["id"]);
             //$stmt->bind_param("ssi", $first_name, $last_name, $id);
 
@@ -66,18 +62,21 @@ ini_set('max_input_time', '-1');
 
                 $result = $stmt->get_result();
 
-		//$searchResults = array();
-                $searchResults = "{results : [";
+			$searchResults = array();
+                        //$searchResults = "{results : [";
+                        //$searchResults = " ";
 
                 while($row = $result->fetch_assoc())
                 {
-			//$searchResults[$searchCount] = $row["first_name"]. ' ' . $row["last_name"]. ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"];
-			$searchResults .= "\"" . $row["first_name"] . ' ' . $row["last_name"] . ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"] . '\", ';
+			$searchResults[$searchCount] = $row["first_name"]. ' ' . $row["last_name"]. ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"];
+			//$searchResults .= "\"" . $row["first_name"] . ' ' . $row["last_name"] . ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"] . '\", ';
                         $searchCount++;
-                }
 
-                $searchResults .= "] error: }";
-                //$length = count($searchResults);
+                }
+                //$searchResults .= "] error: }";
+
+                $stmt->close();
+                $conn->close();
 
                 if( $searchCount == 0 )
                 {
@@ -87,9 +86,6 @@ ini_set('max_input_time', '-1');
                 {
                         sendResultInfoAsJson( $searchResults );
                 }
-
-                $stmt->close();
-                $conn->close();
         }
 
         function getRequestInfo()
@@ -99,13 +95,15 @@ ini_set('max_input_time', '-1');
 
         function sendResultInfoAsJson( $obj )
         {
+
                 header('Content-type: application/json');
-		//$length = count($obj);
-                //for ($i = 0; $i < $length; $i++) {
-                //echo $obj[$i];
-                //echo "\r\n";
-                //}
-                sendResultInfoAsJson( $obj );
+                $length = count($obj);
+                for ($i = 0; $i < $length; $i++) {
+                        echo $obj[$i];
+                        echo "\r\n";
+                }
+                //var_dump($obj);
+                
         }
 
         function returnWithError( $err )
