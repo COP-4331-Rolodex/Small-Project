@@ -29,8 +29,7 @@ ini_set("error_log", "/tmp/php-error.log");
 	{
 
 		$conn->query("SET @in_username='$inData[login]';");
-		$hashedPwd = md5($inData['password']);
-		$conn->query("SET @in_password='$hashedPwd';");
+		$conn->query("SET @in_password='$inData[password]';");
 
 		$stmt = $conn->query("CALL `Authenticate`(@in_username, @in_password);");
 			
