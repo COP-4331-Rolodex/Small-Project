@@ -1,0 +1,901 @@
+html
+{
+  height: 100%;
+}
+
+body
+{
+  height: 100%;
+  margin: 0;
+  font-family: Roboto;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-image: url(background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+   background-size: cover;
+}
+
+#login_container
+{
+  width: 50%;
+  height: 70%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: #2F2A4A;
+  border-radius: 50px;
+}
+
+#login_header
+{
+    width: 75%;
+    padding-top: 50px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    outline: none;
+}
+#login_error_msg_container
+{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+#login_error_msg
+{
+  width: 23%;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #8a0000;
+  border: 1px solid #8a0000;
+  background-color: #e58f8f;
+  opacity: 0;
+}
+
+#login_error_msg_secondln
+{
+  display: block;
+}
+
+#login_form
+{
+  align-self: flex-start;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.login_form_field::placeholder
+{
+  color: #3a3a3a;
+}
+
+.login_form_field
+{
+  border: none;
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 10px;
+  border-radius: 1px;
+  outline: none;
+  padding: 0px 0px 5px 5px;
+}
+
+#username_field {
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 10px;
+    font: 1em Roboto;
+    border-radius: 4px;
+    font-size: 20px;
+    font: Roboto;
+}
+
+#password_field {
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 10px;
+    font: 1em Roboto;
+    border-radius: 4px;
+    font-size: 20px;
+    font: Roboto;
+}
+
+#login_form_submit
+{
+    font: 1em Roboto;
+    width: 570%;
+    margin-top:5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #41A8DE;
+    cursor: pointer;
+    outline: none;
+}
+
+#form_footer_index
+{
+    color: white;
+    padding-bottom: 70px;
+    font-size: 20px;
+}
+
+.signup
+{
+  height: 100%;
+  margin: 0;
+  font-family: Roboto;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-image: url(dark_background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+#signup_link
+{
+  color: #A7E1FF;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#signup_link:hover
+{
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#signup_container
+{
+  width: 50%;
+  height: 70%;
+  display: flex;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  overflow:hidden;
+  outline: none;
+}
+
+.signup_container_left
+{
+    align-items: flex-start;
+    background-color: #2F2A4A;
+    flex: 1;
+}
+
+.signup_container_right
+{
+    background-color: #FFFFFF;
+    flex: 1;
+
+}
+
+#signup_header
+{
+    width: 30%;
+    padding-top: 25px;
+    padding-left: 25px;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    outline: none;
+}
+
+#signup_graphic
+{
+    width: 85%;
+    padding-top: 15px;
+    padding-left: 32px;
+    padding-bottom: 20px;
+    border: none;
+    outline: none;
+}
+
+#signup_border
+{
+    width:90%
+}
+
+#signup_message
+{
+    width: 88%;
+    padding-top: 8px;
+    padding-left: 32px;
+    border: none;
+    outline: none;
+}
+
+#signup_text_right
+{
+    width: 40%;
+    padding-top: 50px;
+    padding-left: 40px;
+    padding-bottom: 8px;
+    border: none;
+    outline: none;
+}
+
+#form_footer_signup
+{
+    color: #B1B1B1;
+    padding-left: 40px;
+    font-size: 16px;
+}
+
+#login_link
+{
+  color: #2F2A4A;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#login_link:hover
+{
+  color: #A7E1FF;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
+
+#signup_text
+{
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#signup_form
+{
+    padding-left: 40px;
+    align-self: flex-start;
+    display: grid;
+    justify-items: left;
+}
+
+.signupform_labels
+{
+    margin: 2px;
+    font-size: 15px;
+}
+
+.signup_form_field
+{
+    width: 85%;
+    border: solid;
+    border: 1px solid #3a3a3a;
+    margin-bottom: 1px;
+    border-radius: 7px;
+    border-color: #ADADAD;
+    outline: none;
+    padding: 8px 8px 8px 8px;
+    font: 1em Roboto;
+}
+
+input[type=text]:focus.signup_form_field
+{
+  border: 2px solid #F4769B;
+}
+
+.checkbox_text
+{
+    font-color: pink;
+    padding-bottom: 20px;
+    padding-top: 13px;
+}
+
+#ready_bold
+{
+    color: #3A6FCD;
+}
+
+.checkbox_pass
+{
+    padding-right: 200px;
+    padding-bottom: 10px;
+    color: white;
+}
+
+#signup_form_submit
+{
+    font: 1em Roboto;
+    width: 85%;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #2F2A4A;
+    cursor: pointer;
+     outline: none;
+}
+
+.contacts_page
+{
+  height: 100%;
+  margin: 0;
+  font-family: Roboto;
+  background-image: url(simple_background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+#contacts_container
+{
+  width: 75%;
+  height: 90%;
+  display: grid;
+  overflow:hidden;
+  outline: none;
+  /* r x c gap */
+  gap: 3%;
+  padding-bottom: 2.5%;
+  grid-template-rows: 1fr 4fr ;     /* adjustment */
+  grid-template-columns: 1fr 2.8fr;  /* adjustment */
+  min-height: 0;  /* NEW */
+   min-width: 0;
+
+}
+
+#contacts_container_1
+{
+    overflow: hidden;
+     min-width: 0;
+}
+
+#contacts_container_2
+{
+    overflow: hidden;
+     min-width: 0;
+}
+
+#contacts_container_3
+{
+    border-radius: 50px;
+    background-color: #4A4C6E;
+    overflow: scroll;
+    min-width: 0;
+}
+
+#contacts_container_4
+{
+     /* grid-column-start: 3; */
+    border-radius: 50px;
+    /* background-color: #4A4C6E; */
+    background-image: url(contact_background.jpg);
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+     background-size: cover;
+    overflow: hidden;
+     min-width: 0;
+
+}
+
+
+#contacts_header
+{
+    width: 45%
+}
+
+#search
+{
+      background-image: url('search_icon.png'); /* Add a search icon to input */
+      background-color: #4A4C6E;
+      background-position: 22px 17px; /* Position the search icon */
+      background-size: 9%;
+      background-repeat: no-repeat; /* Do not repeat the icon image */
+      width: 99%; /* Full-width */
+      border-radius: 35px;
+      height: 45%;
+      font-size: 32px; /* Increase font-size */
+      padding: 12px 20px 12px 75px; /* Add some padding */
+      font-family: Roboto;
+      border: none;
+      margin-top: 28px;
+      margin-left: 2px;
+}
+
+#search::placeholder
+{
+    color: #9597AA;
+    opacity: 1;
+}
+
+#search:focus
+{
+    color: white;
+    outline: none;
+    box-shadow: 0 0 0 2px #D3E7F7;
+
+}
+
+#search:active
+{
+    color: white;
+}
+
+#contact_list
+{
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+#navbar
+{
+    overflow: hidden;
+}
+
+#navbar a {
+  float: right;
+  color: #f2f2f2;
+  /* text-align: right; */
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 24px;
+  font-family: Roboto;
+}
+
+#navbar a:hover {
+  color:#B4D9FD;
+}
+
+a.add_btn
+{
+    float: right;
+    margin-top: 24px;
+    padding: 4px 50px 4px 50px;
+    color: white;
+    font-size: 28px;
+    text-decoration:none;
+    text-align:center;
+    background: transparent;
+    border: 5px solid #4A4C6E;
+    border-radius:45px;
+    margin-right: 3px;
+}
+
+a.add_btn:hover
+{
+    color: #2F2A4A;
+    background-color: #4A4C6E;
+    background-image: linear-gradient(90deg, #f2ced6, #f0d1de, #ecd4e6, #e7d7ec, #e2dbf1, #dddff5, #d8e3f7, #d5e6f7);
+    /* border: none; */
+    box-sizing: content-box;
+}
+
+/*
+.button1_wrap {
+    margin-top: 35px;
+    margin-right: 3px;
+    float:right;
+    background:
+     linear-gradient(#2F2A4A,#2F2A4A) padding-box, /*this is your grey background
+     linear-gradient(90deg, #f2ced6, #f0d1de, #ecd4e6, #e7d7ec, #e2dbf1, #dddff5, #d8e3f7, #d5e6f7) border-box;
+    width:17%;
+    height: 40%;
+    border: 5px solid transparent;
+    border-radius: 35px;
+}
+*/
+
+#contact_id
+{
+    width: 25%;
+    margin-right: 12px;
+    margin-top: 15px;
+    border-radius: 50px;
+    height: 30%;
+}
+
+* {box-sizing: border-box}
+
+/* Style the tab */
+.tab {
+  float: left;
+  background-color: none;
+  width: 100%;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: white;
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-left: 32px;
+  width: 100%;
+  border: 10px;
+  outline: 10px white;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.5s;
+  border-radius: 35px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: white;
+  color:#4A4C6E;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: white;
+  color:#4A4C6E;
+}
+
+.tab button:first-child
+{
+    padding-top: 20px;
+}
+
+/* Style the tab content */
+.tabcontent {
+    margin-top: 35px;
+    display: none;
+    font: Roboto;
+    color: white;
+}
+
+#contact_label
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.contact_name_field
+{
+    padding-top: 3px;
+    font-family: Roboto;
+    font-size: 24px;
+}
+
+#contact_first_name_field
+{
+    padding-top: 3px;
+    font-family: Roboto;
+    font-size: 24px;
+}
+
+#contact_last_name_field
+{
+    padding-top: 3px;
+    font-family: Roboto;
+    font-size: 24px;
+}
+
+#contact_rel_field
+{
+    font-family: Roboto;
+    font-size: 18px;
+    color: #A5A6B6;
+}
+
+.contact_info_container
+{
+    /* display: flex; */
+
+}
+
+.first_half
+{
+    display: flex;
+    margin-top: 10px;
+
+}
+
+#contact_id_content
+{
+    /* padding-top: 40px; */
+    /* padding-left: 45px; */
+    margin-left: 68px;
+    margin-top: 20px;
+    width: 16%;
+    border-radius: 300px;
+
+}
+
+a.delete_btn
+{
+    color: white;
+    padding: 10px 40px 10px 40px;
+    font-size: 28px;
+    text-decoration:none;
+    text-align:center;
+    background: transparent;
+    border: 5px solid #767891;
+    border-radius:45px;
+}
+
+a.delete_btn:hover
+{
+    color: #4A4C6E;
+    background-color: #4A4C6E;
+    background-image: linear-gradient(90deg, #f2ced6, #f0d1de, #ecd4e6, #e7d7ec, #e2dbf1, #dddff5, #d8e3f7, #d5e6f7);
+    /* border: none; */
+    box-sizing: content-box;
+}
+
+.delete_btn_wrap
+{
+    margin-top: 75px;
+    margin-left: 137px;
+    position:absolute;
+    right: 300px;
+    z-index:999;
+}
+
+#first_name
+{
+    font-family: Roboto;
+    font-size: 38px;
+    color: white;
+    padding-left: 30px;
+    padding-top: 68px;
+    position: relative;
+    white-space: nowrap;
+}
+
+#name
+{
+    font-family: Roboto;
+    font-size: 38px;
+    color: white;
+    padding-left: 10px;
+    padding-top: 68px;
+    position: relative;
+    white-space: nowrap;
+}
+
+
+#last_name
+{
+    font-family: Roboto;
+    font-size: 38px;
+    color: white;
+    padding-left: 10px;
+    padding-top: 68px;
+    position: relative;
+    white-space: nowrap;
+}
+
+#phone_label
+{
+    margin-top: 20px;
+    margin-left: 75px;
+    font-size: 20px;
+}
+
+#phone
+{
+    margin-left: 75px;
+    font-size: 30px;
+}
+
+#email_label
+{
+    margin-top: 22px;
+    margin-left: 75px;
+    font-size: 20px;
+}
+
+#email
+{
+    margin-left: 75px;
+    font-size: 30px;
+}
+
+a.edit_btn
+{
+    color: white;
+    padding: 10px 50px 10px 50px;
+    font-size: 28px;
+    text-decoration:none;
+    text-align:center;
+    background: transparent;
+    border: 5px solid #767891;
+    border-radius:45px;
+}
+
+a.edit_btn:hover
+{
+    color: #4A4C6E;
+    background-color: #4A4C6E;
+    background-image: linear-gradient(90deg, #f2ced6, #f0d1de, #ecd4e6, #e7d7ec, #e2dbf1, #dddff5, #d8e3f7, #d5e6f7);
+    /* border: none; */
+    box-sizing: content-box;
+}
+
+.edit_btn_wrap
+{
+    margin-top: 28px;
+    margin-left: 70px;
+}
+
+#welcome
+{
+    font-size: 30px;
+    color: white;
+    font-family: Roboto;
+    margin-left: 10px;
+    padding-top: 45px;
+}
+
+#edit_phone
+{
+      background-color: white;
+      background-position: 22px 17px; /* Position the search icon */
+      width: 40%; /* Full-width */
+      border-radius: 24px;
+      height:10%;
+      font-size: 28px; /* Increase font-size */
+      padding: 12px 20px 12px 20px; /* Add some padding */
+      font-family: Roboto;
+      border: none;
+      margin-top: 10px;
+      margin-left: 75px;
+}
+
+#edit_phone::placeholder
+{
+    color: #9597AA;
+    opacity: 1;
+}
+
+#edit_phone:focus
+{
+    color: #2F2A4A;
+    outline: none;
+    box-shadow: 0 0 0 2px #F4769B;
+}
+
+#edit_phone:active
+{
+    color: pink;
+}
+
+#edit_email
+{
+      background-color: white;
+      background-position: 22px 17px; /* Position the search icon */
+      width: 40%; /* Full-width */
+      border-radius: 24px;
+      height:10%;
+      font-size: 28px; /* Increase font-size */
+      padding: 12px 20px 12px 20px; /* Add some padding */
+      font-family: Roboto;
+      border: none;
+      margin-top: 10px;
+      margin-left: 75px;
+}
+
+#edit_email::placeholder
+{
+    color: #9597AA;
+    opacity: 1;
+}
+
+#edit_email:focus
+{
+    color: #2F2A4A;
+    outline: none;
+    box-shadow: 0 0 0 2px #F4769B;
+}
+
+#edit_email:active
+{
+    color: pink;
+}
+
+
+#edit_name
+{
+      background-color: white;
+      background-position: 22px 17px; /* Position the search icon */
+      width: 40%; /* Full-width */
+      border-radius: 24px;
+      height:10%;
+      font-size: 28px; /* Increase font-size */
+      padding: 12px 20px 12px 20px; /* Add some padding */
+      font-family: Roboto;
+      border: none;
+      margin-top: 75px;
+      margin-left: 20px;
+}
+
+#edit_name::placeholder
+{
+    color: #9597AA;
+    opacity: 1;
+}
+
+#edit_name:focus
+{
+    color: #2F2A4A;
+    outline: none;
+    box-shadow: 0 0 0 2px #F4769B;
+}
+
+#edit_name:active
+{
+    color: pink;
+}
+
+.modal {
+  display: none;
+  width:
+  overflow:hidden;
+  color: white;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 50px;
+}
+
+.modal-content {
+  margin-top: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 20px;
+  border: 1px solid #888;
+  text-align: center;
+  border-radius: 50px;
+  /* width: 30%; */
+}
+
+.close {
+  color: pink;
+  padding: 5px;
+  background-color: white !important;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 30px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#pop_background
+{
+    border-radius: 35px;
+    margin-left: 35%;
+    width: 30%;
+  background-color: #FFCCD9;
+}
+
+
+
+.addcontactbtn
+{
+    color:white;
+    margin-top: 5px;
+    background-color: #B4D9FD;
+    outline: none;
+    border: none;
+    font-size: 25px;
+    font-family: Roboto;
+    border-radius: 30px;
+}

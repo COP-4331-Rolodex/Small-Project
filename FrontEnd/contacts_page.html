@@ -1,0 +1,141 @@
+<html>
+  <head>
+        <title>My Contacts</title>
+        <link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+        <script type="text/javascript" src="js/md5.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/code.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+    crossorigin="anonymous">
+
+</head>
+<body class = "contacts_page" onload="doShowAllContacts();">
+     <section id ="contacts_container">
+
+        <div id = "contacts_container_1">
+            <img id="contacts_header" src="images/myrolodex_header.png"/>
+
+            <!-- Search Filter -->
+            <input type="text" id="search" onkeyup="doSearch();" placeholder="Search">
+        </div>
+
+        <div id = "contacts_container_2">
+
+            <div id="navbar">
+                  <a href="index.html">Logout</a>
+            </div>
+            <!-- <button type="button" class="add_btn" onclick="document.getElementById('myModal').style.display='block'"> Add </button>-->
+            <a onclick="document.getElementById('myModal').style.display='block'" class= "add_btn"> Add </a>
+            <div id="welcome">
+              Welcome back.
+          </div>
+
+        </div>
+
+        <div id = "contacts_container_3">
+<!--
+            <div class="tab">
+              <button class="tablinks" onclick="openContact(event, 'Mariana')" id="defaultOpen">
+                  <div id = "contact_label">
+                      <img id="contact_id" src="https://eu.ui-avatars.com/api/?name=Mariana+Botero&rounded=true&color=2F2A4A&background=FFFFFF">
+                      <div class ="contact_label">
+                        <div id ="contact_first_name_field">Mariana</div>
+                        <div id ="contact_last_name_field">Botero</div>
+                        <div id ="contact_rel_field">Friend</div>
+                     </div>
+                  </div>
+             </button>
+
+              <button class="tablinks" onclick="openContact(event, 'Joel')">
+                  <div id = "contact_label">
+                      <img id="contact_id" src="https://eu.ui-avatars.com/api/?name=Joel+Shaw&rounded=true&color=2F2A4A&background=FFFFFF">
+                      <div class ="contact_label">
+                        <div id ="contact_first_name_field">Joel</div>
+                        <div id ="contact_first_name_field">Shaw</div>
+                        <div id ="contact_rel_field">Friend</div>
+                     </div>
+                  </div>
+            </div> -->
+
+        </div>
+
+        <div id = "contacts_container_4">
+
+                <!-- <div id="Mariana" class="tabcontent">
+                    <div class = "first_half">
+                        <img id="contact_id_content" src="https://eu.ui-avatars.com/api/?name=Mariana+Botero&rounded=true&color=2F2A4A&background=FFFFFF">
+                        <div id = "first_name">Mariana</div>
+                        <div id = "last_name">Botero</div>
+                        <div class = delete_btn_wrap>
+                            <a href="#something" class= "delete_btn"> Delete </a>
+                        </div>
+                    </div>
+                      <div id = "phone_label">Phone</div>
+                      <div id = "phone">(941) 822 - 3964</div>
+                      <div id = "email_label">E-mail</div>
+                      <div id = "email">mbotero@knights.ucf.edu</div>
+                      <div class = "edit_btn_wrap">
+                          <a href="#something" class= "edit_btn"> Edit </a>
+                      </div>
+                </div>
+
+                <div id="Joel" class="tabcontent">
+
+                    <div class = "first_half">
+                        <img id="contact_id_content" src="https://eu.ui-avatars.com/api/?name=Joel+Shaw&rounded=true&color=2F2A4A&background=FFFFFF">
+                        <div id = "first_name">Joel</div>
+                        <div id = "last_name">Shaw</div>
+                        <div class = delete_btn_wrap>
+                            <a href="#something" class= "delete_btn"> Delete </a>
+                        </div>
+                    </div>
+                      <div id = "phone_label">Phone</div>
+                      <div id = "phone">(941) 999 - 9999</div>
+                      <div id = "email_label">E-mail</div>
+                      <div id = "email">joelshaw@knights.ucf.edu</div>
+                      <div class = "edit_btn_wrap">
+                          <a href="#something" class= "edit_btn"> Edit </a>
+                      </div> 
+		</div>-->
+        </div>
+
+    </section>
+
+        <div id="myModal" class="modal">
+        <div class= "modal-content" id="pop_background">
+            <span onclick="document.getElementById('myModal').style.display='none'" class="close">&times;</span>
+            <br><p><input type="text" name="change_First_Name" id="change_First_Name" class="edit_first_name form-control" placeholder="First Name"></p>
+            <p><input type="text" name="change_First_Name" id="change_Last_Name" class="edit_first_name form-control" placeholder="Last Name"></p>
+            <p><input type="text" name="change_First_Name" id="change_Phone_Name" class="edit_first_name form-control" placeholder="Phone"></p>
+            <p><input type="text" name="change_First_Name" id="change_Email_Name" class="edit_first_name form-control" placeholder="E-mail"></p>
+          <button onclick="doAddContact();" id="addcontact-btn" class="addcontactbtn" > Add Contact </button>
+       <button onclick="doUpdateContact(0);" id="addcontact-btn" class="addcontactbtn" > Update Contact </button>
+	</div>
+    </div>
+
+<!--<div id="myModal_edit" class="modal">
+        <div class= "modal-content" id="pop_background">
+            <span onclick="document.getElementById('myModal_edit').style.display='none'" class="close">&times;</span>
+            <br><p><input type="text" name="change_First_Name" id="change_First_Name" class="edit_first_name form-control" placeholder="First Name"></p>
+            <p><input type="text" name="change_First_Name" id="change_Last_Name" class="edit_first_name form-control" placeholder="Last Name"></p>
+            <p><input type="text" name="change_First_Name" id="change_Phone_Name" class="edit_first_name form-control" placeholder="Phone"></p>
+            <p><input type="text" name="change_First_Name" id="change_Email_Name" class="edit_first_name form-control" placeholder="E-mail"></p>
+          <button onclick="doUpdateContact();" id="addcontact-btn" class="addcontactbtn" > Update Contact </button>
+        </div>
+</div>-->
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>
