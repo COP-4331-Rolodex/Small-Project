@@ -2,6 +2,7 @@ html
 {
   height: 100%;
 }
+
 body
 {
   height: 100%;
@@ -12,7 +13,8 @@ body
   align-items: center;
   background-image: url(background.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-attachment: fixed;
+   background-size: cover;
 }
 
 #login_container
@@ -70,7 +72,6 @@ body
   display: grid;
   justify-items: center;
   align-items: center;
-  margin-bottom: 45px
 }
 
 .login_form_field::placeholder
@@ -89,7 +90,7 @@ body
 }
 
 #username_field {
-    width: 150%;
+    width: 100%;
     padding-top: 5px;
     padding-left: 10px;
     font: 1em Roboto;
@@ -99,7 +100,7 @@ body
 }
 
 #password_field {
-    width: 150%;
+    width: 100%;
     padding-top: 5px;
     padding-left: 10px;
     font: 1em Roboto;
@@ -111,7 +112,8 @@ body
 #login_form_submit
 {
     font: 1em Roboto;
-    width: 150%;
+    width: 570%;
+    margin-top:5px;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -140,7 +142,8 @@ body
   align-items: center;
   background-image: url(dark_background.jpg);
   background-repeat: no-repeat;
-  background-attachment: cover;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 
@@ -292,167 +295,579 @@ input[type=text]:focus.signup_form_field
 
 .checkbox_text
 {
-  font-color: pink;
-  padding-bottom: 20px;
-  padding-top: 13px;
+    font-color: pink;
+    padding-bottom: 20px;
+    padding-top: 13px;
 }
 
 #ready_bold
 {
-  color: #3A6FCD;
+    color: #3A6FCD;
+}
+
+.checkbox_pass
+{
+    padding-right: 200px;
+    padding-bottom: 10px;
+    color: white;
 }
 
 #signup_form_submit
 {
-  font: 1em Roboto;
-  width: 85%;
-  padding: 10px;
-  border: none;
-  border-radius: 7px;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  background-color: #2F2A4A;
-  cursor: pointer;
-  outline: none;
+    font: 1em Roboto;
+    width: 85%;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #2F2A4A;
+    cursor: pointer;
+     outline: none;
 }
 
-.ContactBorder
-{
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px;
-  border-radius: 20px;
-  font-family: roboto;
-  font-size: 15px;
-  background-color: #2F2A4A;
-}
-
-.UserPicture
-{
-  padding: 10px;
-  border-radius: 50%;
-  background-color: #000000;
-  flex: 1;
-  justify-content: center;
-  order: 2;
-  align-self: center;
-}
-
-.UserInfo
-{
-  padding: 10px;
-  border-radius: 5% 5% 0% 0%;
-  width: 350px;
-  text-align: center;
-  background-color: #4A4C6E;
-  flex: 1;
-  order: 4;
-  align-self: center;
-  color: white;
-}
-
-#EditUser
-{
-  padding: 0%;
-  flex: 1;
-  order: 3;
-  align-self: center;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-
-#BackToContacts
-{
-  flex: 1;
-  order: 1;
-  align-self: auto;
-  flex-direction: row;
-}
-
-.RelatedUsers
-{
-  align-self: center;
-  width: 350px;
-  height: 10px;
-  padding-top: 0px;
-  border-radius: 0% 0% 5% 5%;
-  background-color: #4A4C6E;
-  margin-top: -3%;
-  margin-bottom: 2%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-basis: 30%;
-  order: 5;
-  color: white;
-}
-
-.rel_user_text
-{
-  margin-top: 3%;
-  margin-left: 27%;
-}
-
-#rel_user_picture
-{
-  padding: 5px;
-  border-radius: 50%;
-  background-color: #000000;
-}
-
-.user_background
+.contacts_page
 {
   height: 100%;
   margin: 0;
   font-family: Roboto;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  background-image: url(dark_background.jpg);
+  background-image: url(simple_background.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
 }
 
-#back_footer_contacts
+
+#contacts_container
 {
-  font-size: 15px;
+  width: 75%;
+  height: 90%;
+  display: grid;
+  overflow:hidden;
+  outline: none;
+  /* r x c gap */
+  gap: 3%;
+  padding-bottom: 2.5%;
+  grid-template-rows: 1fr 4fr ;     /* adjustment */
+  grid-template-columns: 1fr 2.8fr;  /* adjustment */
+  min-height: 0;  /* NEW */
+   min-width: 0;
+
+}
+
+#contacts_container_1
+{
+    overflow: hidden;
+     min-width: 0;
+}
+
+#contacts_container_2
+{
+    overflow: hidden;
+     min-width: 0;
+}
+
+#contacts_container_3
+{
+    border-radius: 50px;
+    background-color: #4A4C6E;
+    overflow: scroll;
+    min-width: 0;
+}
+
+#contacts_container_4
+{
+     /* grid-column-start: 3; */
+    border-radius: 50px;
+    /* background-color: #4A4C6E; */
+    background-image: url(contact_background.jpg);
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+     background-size: cover;
+    overflow: hidden;
+     min-width: 0;
+
+}
+
+
+#contacts_header
+{
+    width: 45%
+}
+
+#search
+{
+      background-image: url('search_icon.png'); /* Add a search icon to input */
+      background-color: #4A4C6E;
+      background-position: 22px 17px; /* Position the search icon */
+      background-size: 9%;
+      background-repeat: no-repeat; /* Do not repeat the icon image */
+      width: 99%; /* Full-width */
+      border-radius: 35px;
+      height: 45%;
+      font-size: 32px; /* Increase font-size */
+      padding: 12px 20px 12px 75px; /* Add some padding */
+      font-family: Roboto;
+      border: none;
+      margin-top: 28px;
+      margin-left: 2px;
+}
+
+#search::placeholder
+{
+    color: #9597AA;
+    opacity: 1;
+}
+
+#search:focus
+{
+    color: white;
+    outline: none;
+    box-shadow: 0 0 0 2px #D3E7F7;
+
+}
+
+#search:active
+{
+    color: white;
+}
+
+#contact_list
+{
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+#navbar
+{
+    overflow: hidden;
+}
+
+#navbar a {
+  float: right;
+  color: #f2f2f2;
+  /* text-align: right; */
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 24px;
+  font-family: Roboto;
+}
+
+#navbar a:hover {
+  color:#B4D9FD;
+}
+
+a.add_btn
+{
+    float: right;
+    margin-top: 24px;
+    padding: 4px 50px 4px 50px;
+    color: white;
+    font-size: 28px;
+    text-decoration:none;
+    text-align:center;
+    background: transparent;
+    border: 5px solid #4A4C6E;
+    border-radius:45px;
+    margin-right: 3px;
+}
+
+a.add_btn:hover
+{
+    color: #2F2A4A;
+    background-color: #4A4C6E;
+    background-image: linear-gradient(90deg, #f2ced6, #f0d1de, #ecd4e6, #e7d7ec, #e2dbf1, #dddff5, #d8e3f7, #d5e6f7);
+    /* border: none; */
+    box-sizing: content-box;
+}
+
+/*
+.button1_wrap {
+    margin-top: 35px;
+    margin-right: 3px;
+    float:right;
+    background:
+     linear-gradient(#2F2A4A,#2F2A4A) padding-box, /*this is your grey background
+     linear-gradient(90deg, #f2ced6, #f0d1de, #ecd4e6, #e7d7ec, #e2dbf1, #dddff5, #d8e3f7, #d5e6f7) border-box;
+    width:17%;
+    height: 40%;
+    border: 5px solid transparent;
+    border-radius: 35px;
+}
+*/
+
+#contact_id
+{
+    width: 25%;
+    margin-right: 12px;
+    margin-top: 15px;
+    border-radius: 50px;
+    height: 30%;
+}
+
+* {box-sizing: border-box}
+
+/* Style the tab */
+.tab {
+  float: left;
+  background-color: none;
+  width: 100%;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: white;
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-left: 32px;
+  width: 100%;
+  border: 10px;
+  outline: 10px white;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.5s;
+  border-radius: 35px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: white;
+  color:#4A4C6E;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: white;
+  color:#4A4C6E;
+}
+
+.tab button:first-child
+{
+    padding-top: 20px;
+}
+
+/* Style the tab content */
+.tabcontent {
+    margin-top: 35px;
+    display: none;
+    font: Roboto;
+    color: white;
+}
+
+#contact_label
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.contact_name_field
+{
+    padding-top: 3px;
+    font-family: Roboto;
+    font-size: 24px;
+}
+
+#contact_first_name_field
+{
+    padding-top: 3px;
+    font-family: Roboto;
+    font-size: 24px;
+}
+
+#contact_last_name_field
+{
+    padding-top: 3px;
+    font-family: Roboto;
+    font-size: 24px;
+}
+
+#contact_rel_field
+{
+    font-family: Roboto;
+    font-size: 18px;
+    color: #A5A6B6;
+}
+
+.contact_info_container
+{
+    /* display: flex; */
+
+}
+
+.first_half
+{
+    display: flex;
+    margin-top: 10px;
+
+}
+
+#contact_id_content
+{
+    /* padding-top: 40px; */
+    /* padding-left: 45px; */
+    margin-left: 68px;
+    margin-top: 20px;
+    width: 16%;
+    border-radius: 300px;
+
+}
+
+a.delete_btn
+{
+    color: white;
+    padding: 10px 40px 10px 40px;
+    font-size: 28px;
+    text-decoration:none;
+    text-align:center;
+    background: transparent;
+    border: 5px solid #767891;
+    border-radius:45px;
+}
+
+a.delete_btn:hover
+{
+    color: #4A4C6E;
+    background-color: #4A4C6E;
+    background-image: linear-gradient(90deg, #f2ced6, #f0d1de, #ecd4e6, #e7d7ec, #e2dbf1, #dddff5, #d8e3f7, #d5e6f7);
+    /* border: none; */
+    box-sizing: content-box;
+}
+
+.delete_btn_wrap
+{
+    margin-top: 75px;
+    margin-left: 137px;
+    position:absolute;
+    right: 300px;
+    z-index:999;
+}
+
+#first_name
+{
+    font-family: Roboto;
+    font-size: 38px;
+    color: white;
+    padding-left: 30px;
+    padding-top: 68px;
+    position: relative;
+    white-space: nowrap;
+}
+
+#name
+{
+    font-family: Roboto;
+    font-size: 38px;
+    color: white;
+    padding-left: 10px;
+    padding-top: 68px;
+    position: relative;
+    white-space: nowrap;
+}
+
+
+#last_name
+{
+    font-family: Roboto;
+    font-size: 38px;
+    color: white;
+    padding-left: 10px;
+    padding-top: 68px;
+    position: relative;
+    white-space: nowrap;
+}
+
+#phone_label
+{
+    margin-top: 20px;
+    margin-left: 75px;
+    font-size: 20px;
+}
+
+#phone
+{
+    margin-left: 75px;
+    font-size: 30px;
+}
+
+#email_label
+{
+    margin-top: 22px;
+    margin-left: 75px;
+    font-size: 20px;
+}
+
+#email
+{
+    margin-left: 75px;
+    font-size: 30px;
+}
+
+a.edit_btn
+{
+    color: white;
+    padding: 10px 50px 10px 50px;
+    font-size: 28px;
+    text-decoration:none;
+    text-align:center;
+    background: transparent;
+    border: 5px solid #767891;
+    border-radius:45px;
+}
+
+a.edit_btn:hover
+{
+    color: #4A4C6E;
+    background-color: #4A4C6E;
+    background-image: linear-gradient(90deg, #f2ced6, #f0d1de, #ecd4e6, #e7d7ec, #e2dbf1, #dddff5, #d8e3f7, #d5e6f7);
+    /* border: none; */
+    box-sizing: content-box;
+}
+
+.edit_btn_wrap
+{
+    margin-top: 28px;
+    margin-left: 70px;
+}
+
+#welcome
+{
+    font-size: 30px;
+    color: white;
+    font-family: Roboto;
+    margin-left: 10px;
+    padding-top: 45px;
+}
+
+#edit_phone
+{
+      background-color: white;
+      background-position: 22px 17px; /* Position the search icon */
+      width: 40%; /* Full-width */
+      border-radius: 24px;
+      height:10%;
+      font-size: 28px; /* Increase font-size */
+      padding: 12px 20px 12px 20px; /* Add some padding */
+      font-family: Roboto;
+      border: none;
+      margin-top: 10px;
+      margin-left: 75px;
+}
+
+#edit_phone::placeholder
+{
+    color: #9597AA;
+    opacity: 1;
+}
+
+#edit_phone:focus
+{
+    color: #2F2A4A;
+    outline: none;
+    box-shadow: 0 0 0 2px #F4769B;
+}
+
+#edit_phone:active
+{
+    color: pink;
+}
+
+#edit_email
+{
+      background-color: white;
+      background-position: 22px 17px; /* Position the search icon */
+      width: 40%; /* Full-width */
+      border-radius: 24px;
+      height:10%;
+      font-size: 28px; /* Increase font-size */
+      padding: 12px 20px 12px 20px; /* Add some padding */
+      font-family: Roboto;
+      border: none;
+      margin-top: 10px;
+      margin-left: 75px;
+}
+
+#edit_email::placeholder
+{
+    color: #9597AA;
+    opacity: 1;
+}
+
+#edit_email:focus
+{
+    color: #2F2A4A;
+    outline: none;
+    box-shadow: 0 0 0 2px #F4769B;
+}
+
+#edit_email:active
+{
+    color: pink;
+}
+
+
+#edit_name
+{
+      background-color: white;
+      background-position: 22px 17px; /* Position the search icon */
+      width: 40%; /* Full-width */
+      border-radius: 24px;
+      height:10%;
+      font-size: 28px; /* Increase font-size */
+      padding: 12px 20px 12px 20px; /* Add some padding */
+      font-family: Roboto;
+      border: none;
+      margin-top: 75px;
+      margin-left: 20px;
+}
+
+#edit_name::placeholder
+{
+    color: #9597AA;
+    opacity: 1;
+}
+
+#edit_name:focus
+{
+    color: #2F2A4A;
+    outline: none;
+    box-shadow: 0 0 0 2px #F4769B;
+}
+
+#edit_name:active
+{
+    color: pink;
 }
 
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  display: none;
+  width:
+  overflow:hidden;
   color: white;
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 50px;
 }
 
-/* Modal Content/Box */
 .modal-content {
-  background-color: #000000 !important;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin-top: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
   padding: 20px;
   border: 1px solid #888;
   text-align: center;
-  width: 30%; /* Could be more or less, depending on screen size */
+  border-radius: 50px;
+  /* width: 30%; */
 }
 
-/* The Close Button */
 .close {
-  color: black !important;
+  color: pink;
   padding: 5px;
-  margin-bottom: 5px !important;
   background-color: white !important;
   font-size: 25px;
   font-weight: bold;
+  border-radius: 30px;
 }
 
 .close:hover,
@@ -462,8 +877,25 @@ input[type=text]:focus.signup_form_field
   cursor: pointer;
 }
 
+
 #pop_background
 {
-  background-color: #000000;
+    border-radius: 35px;
+    margin-left: 35%;
+    width: 30%;
+  background-color: #FFCCD9;
 }
 
+
+
+.addcontactbtn
+{
+    color:white;
+    margin-top: 5px;
+    background-color: #B4D9FD;
+    outline: none;
+    border: none;
+    font-size: 25px;
+    font-family: Roboto;
+    border-radius: 30px;
+}

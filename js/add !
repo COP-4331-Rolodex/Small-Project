@@ -6,10 +6,6 @@ var firstName = "";
 var lastName = "";
 var fullName = "";
 var contactId = 0;
-var newContactDiv = "";
-var listContactInfoDiv = "";
-var nameKey = "";
-
 
 function doLogin()
 {
@@ -271,13 +267,13 @@ function doAddContact()
 
 }
 
-function doDeleteContact(contactId)
+function doDeleteContact()
 {
         //userId = localStorage.getItem("currentID");localStorage.getItem("currentID")
         //document.getElementById("DeleteUser").innerHTML = "";
         //contactId = 0;
 
-        //contactId = document.getElementById("DeleteUser").value;//Needs to be updated with parameter from html page;
+        contactId = 15;//Needs to be updated with parameter from html page;
 
         var userToDelete = {
                 id: contactId
@@ -312,8 +308,7 @@ function doDeleteContact(contactId)
                                         return;
                                 }*/
                                 window.alert("Your contact was succesfully deleted!");
-                                window.location.reload(true);
-                                //window.location.href = "Search-Contacts(Temporary).html";
+                                window.location.href = "Search-Contacts(Temporary).html";
                         }
                 };
                 xhr.send(deletedUser);
@@ -325,26 +320,17 @@ function doDeleteContact(contactId)
         }
 }
 
-function doUpdateContact(contactId)
+function doUpdateContact()
 {
         firstName = "";
         lastName = "";
         fullName = "";
-	
-	
 
-        //contactId = document.getElementById("DeleteUser").value;
+        contactId = 3;
         firstName = document.getElementById("change_First_Name").value;
         lastName = document.getElementById("change_Last_Name").value;
         var phonenumber = document.getElementById("change_Phone_Name").value;
         var emailaddress = document.getElementById("change_Email_Name").value;
-	
-        if (contactId == 0)
-        {
-                contactId = localStorage.getItem(nameKey);
-                console.log(contactId);
-        }
-
 
         var url = urlBase + '/LAMPAPI/Update.' + extension;
 
@@ -423,34 +409,17 @@ function showPassword()
 
 function doSearch()
 {
-        console.log("Search");
         contactId = 0;
         var search = document.getElementById("search").value;
         userId = localStorage.getItem("loginId");
         var firstName = "";
         var lastName = "";
 
-        var firstPageLoad = 0;
-
-        if (firstPageLoad != 0)
-        {
-                 //document.getElementById(contacts_container_3).innerHTML = "";
-                 //document.getElementById(contacts_container_4).innerHTML = "";
-                clearTabs(contacts_container_3);
-                clearTabs(contacts_container_4);
-        }
-        else
-        {
-                firstPageLoad++;
-        }
-
-        console.log(firstPageLoad);
-
         var searchContacts = {
                 id: userId,
                 name: search
         };
-
+        
         var contactsFound = JSON.stringify(searchContacts);
 
         var url = urlBase + '/LAMPAPI/Search.' + extension;
@@ -464,67 +433,34 @@ function doSearch()
                 {
                         if(this.readyState == 4 && this.status == 200)
                         {
-                                var newHeaderTab = document.querySelector('#contacts_container_3');
-                                var newSideTab = document.querySelector('#contacts_container_4');
-
-
+                                const newHeaderTab = document.querySelector('.contacts_container_3');
+                                const newSideTab = document.querySelector('.contacts_container_4');
                                 if (xhr.response == "")
                                 {
                                         window.alert("There was a problem with the search. Please try again.");
                                         return;
                                 }
 
-
-                                console.log(xhr.response);
+                                // Clears out table on new search
+                                /*while(table.rows.length > 1) {
+                                        table.deleteRow(table.rows.length - 1);
+                                }
+                                console.log(xhr.response);*/
 
                                 var jsonObject = JSON.parse( xhr.responseText );
-                                var readId = jsonObject[0].id;
-
-                                if (!jsonObject[0].id)
-                                {
-                                         clearTabs(newContactDiv);
-                                        clearTabs(listContactInfoDiv);
-                                        return;
-                                }
-                                else if (jsonObject[0].id == 0)
-                                {
-                                         clearTabs(newContactDiv);
-                                         clearTabs(listContactInfoDiv);
-                                        return;
-                                }
-                                else
-                                {
-                                        ;
-                                }
-
-                                clearTabs(newContactDiv);
-                                clearTabs(listContactInfoDiv);
-
-
-                                var length = jsonObject.length;
+                                //res = (jsonObject.results).split(" ");
+                                //var length = res.length/5;
                                 for( var i=0; i<length; i++ )
                                 {
-                                        // singleContact = (jsonObject.results[i]).split(" ");
-                                         console.log(readId);
-
-                                        //var jsonObject = JSON.parse( xhr.responseText );
-                                        if (readId == 0)
-                                        {
-                                                 clearTabs(newContactDiv);
-                                                 clearTabs(listContactInfoDiv);
-                                                return;
-                                        }
-
-                                        newContactDiv = document.createElement('div');
+                                        const newContactDiv = document.createElement('div');
                                         newContactDiv.classList.add('newContact');
                                         newContactDiv.innerHTML = `
                                         <div class="tab">
-                                                <button class="tablinks" onclick="openContact(event, '`+jsonObject[i].id+`')" id="defaultOpen">
+                                                <button class="tablinks" onclick="openContact(event, 'Mariana')" id="defaultOpen">
                                                 <div id = "contact_label">
-                                                <img id="contact_id" src="https://eu.ui-avatars.com/api/?name=`+jsonObject[i].first_name+`+`+jsonObject[i].last_name+`&rounded=true&color=2F2A4A&background=FFFFFF">
-
+                                                <img id="contact_id" src="https://eu.ui-avatars.com/api/?name=Mariana+Botero&rounded=true&color=2F2A4A&background=FFFFFF">
                                                 <div class ="contact_label">
-                                                        <div id ="contact_name_field">`+ jsonObject[i].first_name + " " + jsonObject[i].last_name + `</div>
+                                                        <div id ="contact_name_field">Mariana Botero</div>
                                                         <div id ="contact_rel_field">Friend</div>
                                                 </div>
                                         </div>
@@ -532,38 +468,30 @@ function doSearch()
                                 </div>`;
 
                                 newHeaderTab.appendChild(newContactDiv);
+
                                 //<!--Hiden tab-->
 
-                                listContactInfoDiv = document.createElement('div');
+                                const listContactInfoDiv = document.createElement('div');
                                 listContactInfoDiv.classList.add('contactInfo');
                                 listContactInfoDiv.innerHTML = `
-                                <div id="`+jsonObject[i].id+`" class="tabcontent">
+                                <div id="Mariana" class="tabcontent">
 
                                         <div class = "first_half">
-                                                <img id="contact_id_content" src="https://eu.ui-avatars.com/api/?name=`+jsonObject[i].first_name+`+`+jsonObject[i].last_name+`&rounded=true&color=2F2A4A&background=FFFFFF">
-                                                <div id = "name">` + jsonObject[i].first_name + " " + jsonObject[i].last_name + `</div>
-                                                <div class = delete_btn_wrap id = "deleteContact">
-                                                <a onclick="doDeleteContact(`+jsonObject[i].id+`);" class= "delete_btn"> Delete </a>
+                                                <img id="contact_id_content" src="https://eu.ui-avatars.com/api/?name=Mariana+Botero&rounded=true&color=2F2A4A&background=FFFFFF">
+                                                <div id = "name">Mariana Botero</div>
+                                                <div class = delete_btn_wrap>
+                                                <a href="#something" class= "delete_btn"> Delete </a>
                                         </div>
                                 </div>
                                 <div id = "phone_label">Phone</div>
-                                <div id = "phone">` + jsonObject[i].phone + `</div>
+                                <div id = "phone">(941) 822 - 3964</div>
                                 <div id = "email_label">E-mail</div>
-                                <div id = "email">` + jsonObject[i].email + `</div>
+                                <div id = "email">mbotero@knights.ucf.edu</div>
                                 <div class = "edit_btn_wrap">
-                                        <a onclick="document.getElementById('myModal').style.display='block'" class= "edit_btn" id = "editContact"> Update </a>
-				</div>
+                                        <a href="#something" class= "edit_btn"> Edit </a>
+                                </div>
                         </div>
                 </div>`
-                                        /*document.addEventListener("DOMContentLoaded", function () {
-                                                 document.getElementById('deleteContact').value= jsonObject[i].id;
-                                                document.getElementById('editContact').value= jsonObject[i].id;
-                                                console.log(document.getElementById('deleteContact').value);
-                                              console.log(document.getElementById('editContact').value);
-                                        });*/
-					nameKey = jsonObject[i].first_Name;
-					localStorage.setItem(nameKey, jsonObject[i].id);
-
                         newSideTab.appendChild(listContactInfoDiv);
                                 }
                         }
@@ -574,128 +502,4 @@ function doSearch()
         {
                 windows.alert("An error occured.");
         }
-}
-
-function doShowAllContacts()
-{
-         console.log("Contacts");
-        contactId = 0;
-        userId = localStorage.getItem("loginId");
-        var firstName = "";
-        var lastName = "";
-        var firstPageLoad = 0;
-        var search = document.getElementById("search").value;
-
-        if (firstPageLoad != 0)
-        {
-                  document.getElementById(contacts_container_3).innerHTML = "";
-                  document.getElementById(contacts_container_4).innerHTML = "";
-        }
-        else
-        {
-                firstPageLoad++;
-        }
-
-        var showContacts = {
-                id: userId,
-        };
-
-        var displayContacts = JSON.stringify(showContacts);
-
-        console.log(displayContacts);
-
-        var url = urlBase + '/LAMPAPI/List.' + extension;
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", url, true);
-        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-        try
-        {
-                xhr.onreadystatechange = function()
-                {
-                        if (this.readyState == 4 && this.status == 200)
-                        {
-                                var newHeaderTab = document.querySelector('#contacts_container_3');
-                                var newSideTab = document.querySelector('#contacts_container_4');
-
-                                console.log(xhr.response);
-
-                                var jsonObject = JSON.parse( xhr.responseText );
-				var readId = jsonObject[0].id;
-                                if (!jsonObject[0].id)
-                                {
-                                        return;
-                                }
-                                var length = jsonObject.length;
-                                for( var i=0; i<length; i++ )
-                                {
-                                console.log(jsonObject[i].first_name);
-					readId = jsonObject[i].id;
-					console.log(readId);
-                                        newContactDiv = document.createElement('div');
-                                        newContactDiv.classList.add('newContact');
-                                        newContactDiv.innerHTML = `
-                                       <div class="tab">
-                                                <button class="tablinks" onclick="openContact(event, '`+ readId +`')" id="defaultOpen">
-                                                <div id = "contact_label">
-                                                <img id="contact_id" src="https://eu.ui-avatars.com/api/?name=`+jsonObject[i].first_name+`+`+jsonObject[i].last_name+`&rounded=true&color=2F2A4A&background=FFFFFF">
-                                                <div class ="contact_label">
-                                                        <div id ="contact_name_field">`+ jsonObject[i].first_name + " " + jsonObject[i].last_name + `</div>
-                                                        <div id ="contact_rel_field">Friend</div>
-                                                </div>
-                                        </div>
-                                </button>
-                                </div>`;
-
-                               newHeaderTab.appendChild(newContactDiv);
-
-                                //<!--Hiden tab-->
-
-                                listContactInfoDiv = document.createElement('div');
-                                listContactInfoDiv.classList.add('contactInfo');
-                                listContactInfoDiv.innnerHTML = `
-                                <div id="`+jsonObject[i].id+`" class="tabcontent">
-
-                                        <div class = "first_half">
-                                                <img id="contact_id_content" src="https://eu.ui-avatars.com/api/?name=`+jsonObject[i].first_name+`+`+jsonObject[i].last_name+`&rounded=true&color=2F2A4A&background=FFFFFF">
-                                                <div id = "name">` + jsonObject[i].first_name + " " + jsonObject[i].last_name + `</div>
-                                                <div class = delete_btn_wrap id = "deleteContact">
-                                                <a onclick = "doDeleteContact(`+jsonObject[i].id+`);" =  class= "delete_btn" value = "0" id="deleteContact"> Delete </a>
-                                        </div>
-                                </div>
-                                <div id = "phone_label">Phone</div>
-                                <div id = "phone">` + jsonObject[i].phone + `</div>
-                                <div id = "email_label">E-mail</div>
-                                <div id = "email">` + jsonObject[i].email + `</div>
-                                <div class = "edit_btn_wrap">
-                                        <a onclick = "doUpdateContact(`+jsonObject[i].id+`);" class= "edit_btn" id = "editContact"> Update </a>
-                                </div>
-                        </div>
-                </div>`
-                                newSideTab.appendChild(listContactInfoDiv);
-                                }
-                        }
-                };
-                xhr.send(displayContacts);
-        }
-        catch(err)
-        {
-                windows.alert("An error occured.");
-        }
-}
-
-function clearTabs(parent) {
-
-    var p = parent.parentNode;
-        if (p == null)
-        {
-                return;
-        }
-    while (p.firstChild) {
-            console.log(p.firstChild);
-        p.removeChild(p.firstChild);
-    }
-    console.log(p);
-    parent.remove(p);
-p.innerHTML = "";
 }

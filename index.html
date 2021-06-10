@@ -17,10 +17,16 @@
                 password.</span></p>
         </div>
 
-        <div id="login_form">
-            <input type="text" name="username" id="username_field" class="login_form_field" placeholder="Username">
+      	<div id="login_form">
+            <input type="text" name="username" id="username_field" class="login_form_field" placeholder="Email">
             <input type="password" name="password" id="password_field" class="login_form_field" placeholder="Password">
-            <br>
+            <div class="checkbox_pass">
+                <input type="checkbox" onclick="showPassword()">
+                    Show Password
+            </div>
+        </div>
+
+        <div id="login_form">
             <input type="button" value="Login" id="login_form_submit" onclick="doLogin();"><br>
         </div>
 

@@ -1,4 +1,4 @@
-x<html>
+<html>
   <head>
         <title>Sign Up</title>
         <link rel="shortcut icon" type="images/x-icon" href="images/logo.png">
@@ -42,10 +42,11 @@ x<html>
                <input type="text" class="signup_form_field" id = "sign_up_email" name="Email" placeholder="johnsmith@myrolo.com" ><br>
 
                <p class= "signupform_labels">Password</p>
-               <input type="text" class="signup_form_field" id = "sign_up_password" name="Password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+               <input type="password" class="signup_form_field" id = "sign_up_password" name="Password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+
 
                <label class="checkbox_text">
-                   <input type="checkbox">
+		       <input type="checkbox" id="checked_value">
                    I agree to the
                    <b id = "ready_bold">Terms and Conditions</b>.
                </label>
@@ -60,6 +61,8 @@ x<html>
 
 
     </div>
-
+    <!--<script>
+    	document.getElementById(checked_value) = false;
+    </script>-->
 </body>
 </html>
