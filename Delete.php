@@ -1,4 +1,10 @@
 <?php
+
+	header('Access-Control-Allow-Origin: *');
+	header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+	header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
+
+
 	$inData = getRequestInfo();
 
 	$servername = "localhost";
@@ -15,12 +21,18 @@
 	else
 	{
 		//$inData[in_id]
-		$conn->query("SET @in_id='$inData[id]'; CALL 'Delete_contact'(@in_id);");
-		if ($conn->query("CALL 'Read_Contact'(@in_id)") == NULL)
-		{
-	 		echo "Record deleted successfully.";
-		}
-		$conn->close();
+		//$conn->query("SET @in_id='13'; CALL `Delete_contact` (@in_id);");
+		//$conn->query("SET @in_id=13; CALL `Delete_contact`(@in_id);");
+		
+	        $conn->query("SET @in_id='$inData[id]';");
+                $conn->query("CALL `Delete_contact`(@in_id);");
+	       	$delete = $conn->query("CALL `Read_contact`(@in_id);");
+	
+		if ($delete == NULL)
+                {
+                        echo "Record deleted successfully.";
+                }
+                $conn->close();
 	}
 
 	function getRequestInfo()

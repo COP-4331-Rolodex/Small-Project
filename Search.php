@@ -68,7 +68,8 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
                 while($row = $result->fetch_assoc())
                 {
-			$searchResults[$searchCount] = $row["first_name"]. ' ' . $row["last_name"]. ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"];
+			$searchResults[] = $row;
+			//$searchResults[$searchCount] = $row["first_name"]. ' ' . $row["last_name"]. ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"];
 			//$searchResults .= "\"" . $row["first_name"] . ' ' . $row["last_name"] . ' ' . $row["email"] . ' '. $row["phone"] . ' ' . $row["id"] . '\", ';
                         $searchCount++;
 
@@ -97,11 +98,12 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
         {
 
                 header('Content-type: application/json');
-                $length = count($obj);
+                echo json_encode($obj);
+		/*$length = count($obj);
                 for ($i = 0; $i < $length; $i++) {
                         echo $obj[$i];
                         echo "\r\n";
-                }
+                }*/
                 //var_dump($obj);
                 
         }

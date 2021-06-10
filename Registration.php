@@ -1,5 +1,9 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
+
 error_reporting(E_ALL); // reports all errors
 ini_set("display_errors", "1"); // shows all errors
 ini_set("log_errors", 1);
@@ -7,7 +11,6 @@ ini_set("error_log", "/tmp/php-error.log");
 
 	$inData = getRegistrationInfo();
 
-    if(nullchecker($inData) == 0){
 	
         $id = 0;
         $name = "";
@@ -26,28 +29,13 @@ ini_set("error_log", "/tmp/php-error.log");
         else
         {
 
-		$conn->query("SET @in_name='$inData[name]';");
+                $conn->query("SET @in_name='$inData[name]';");
                 $conn->query("SET @in_username='$inData[username]';");
                 $conn->query("SET @in_password='$inData[password]';");
 
                 $conn->query("CALL `Create_user`(@in_name, @in_username, @in_password);");
 
         }
-    }
-
-    else{
-        returnWithError("User Entered Null Value");
-    }
-
-    //Returns 1 if something is null
-    function nullchecker($inData){
-        if($inData['name'] != "" && $inData['username'] != "" && $inData['password'] != ""){
-            return 0;
-        }
-        else{
-            return 1;
-        }
-    }
 
     function returnWithError( $err )
 	{
