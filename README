@@ -4,6 +4,6 @@
   Development was split into three parts- the front end, the API, and the database. The front end was developed using a combination of HTML and CSS to create the webpage, and implemented JavaScript to make the website reactive and work with the API when necessary. The API was developed using PHP and acts as the messenger between the website and the database. The database utilizes mySQL and contains two tables, a user table and a user's contact table.
   
 # USE
-  To use the application the user must go to the afore mentioned website, https://myrolodex.xyz/ . Once there, the user must either choose to log in using a previously created account, or create a new account if one is not available. 
+  To use the application the user must go to the afore mentioned website, https://myrolodex.xyz/. Once there, the user must either choose to log in using a previously created account, or create a new account if one is not available. 
     - If a user chooses to create a new account, the user's name, email address and password must be input, followed by the acknowledgement that they have read the terms and conditions regarding the use of myRolodex. When complete, the user then clicks the "Register" button to then create the new account.
     - If a user chooses to sign in with an existing account, they will input the username/email associated with the account, followed by the password, then click on the "Login" button to enter the application.
