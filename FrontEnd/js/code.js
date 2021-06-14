@@ -8,7 +8,6 @@ var fullName = "";
 var contactId = 0;
 var newContactDiv = "";
 var listContactInfoDiv = "";
-var nameKey = "";
 
 
 function doLogin()
@@ -312,7 +311,7 @@ function doDeleteContact(contactId)
                                         return;
                                 }*/
                                 window.alert("Your contact was succesfully deleted!");
-                                window.location.reload(true);
+                                //window.location.reload(true);
                                 //window.location.href = "Search-Contacts(Temporary).html";
                         }
                 };
@@ -330,21 +329,17 @@ function doUpdateContact(contactId)
         firstName = "";
         lastName = "";
         fullName = "";
-	
-	
+
+        if (contactId == 0)
+        {
+                contactId = document.getElementById("updateId").value;
+        }
 
         //contactId = document.getElementById("DeleteUser").value;
         firstName = document.getElementById("change_First_Name").value;
         lastName = document.getElementById("change_Last_Name").value;
         var phonenumber = document.getElementById("change_Phone_Name").value;
         var emailaddress = document.getElementById("change_Email_Name").value;
-	
-        if (contactId == 0)
-        {
-                contactId = localStorage.getItem(nameKey);
-                console.log(contactId);
-        }
-
 
         var url = urlBase + '/LAMPAPI/Update.' + extension;
 
@@ -386,7 +381,6 @@ function doUpdateContact(contactId)
                                 }
                         //document.getElementById("signup_form_submit").innerHTML = "User was created";
                         window.alert("Contact has been updated!");
-                        window.location.reload(true);
                         return;
                         }
                 };
@@ -551,8 +545,9 @@ function doSearch()
                                 <div id = "email_label">E-mail</div>
                                 <div id = "email">` + jsonObject[i].email + `</div>
                                 <div class = "edit_btn_wrap">
-                                        <a onclick="document.getElementById('myModal').style.display='block'" class= "edit_btn" id = "editContact"> Update </a>
-				</div>
+                                        <a onclick="movingContactInfo(`+jsonObject[i].id+`); openModal();" class= "edit_btn" id = "editContact"> Update </a>
+                                        <span hidden id="updateId">`+jsonObject[i].id+`<span>
+                                </div>
                         </div>
                 </div>`
                                         /*document.addEventListener("DOMContentLoaded", function () {
@@ -561,8 +556,6 @@ function doSearch()
                                                 console.log(document.getElementById('deleteContact').value);
                                               console.log(document.getElementById('editContact').value);
                                         });*/
-					nameKey = jsonObject[i].first_Name;
-					localStorage.setItem(nameKey, jsonObject[i].id);
 
                         newSideTab.appendChild(listContactInfoDiv);
                                 }
@@ -621,7 +614,7 @@ function doShowAllContacts()
                                 console.log(xhr.response);
 
                                 var jsonObject = JSON.parse( xhr.responseText );
-				var readId = jsonObject[0].id;
+                                var readId = jsonObject[0].id;
                                 if (!jsonObject[0].id)
                                 {
                                         return;
@@ -630,8 +623,8 @@ function doShowAllContacts()
                                 for( var i=0; i<length; i++ )
                                 {
                                 console.log(jsonObject[i].first_name);
-					readId = jsonObject[i].id;
-					console.log(readId);
+                                        readId = jsonObject[i].id;
+                                        console.log(readId);
                                         newContactDiv = document.createElement('div');
                                         newContactDiv.classList.add('newContact');
                                         newContactDiv.innerHTML = `
@@ -668,7 +661,7 @@ function doShowAllContacts()
                                 <div id = "email_label">E-mail</div>
                                 <div id = "email">` + jsonObject[i].email + `</div>
                                 <div class = "edit_btn_wrap">
-                                        <a onclick = "doUpdateContact(`+jsonObject[i].id+`);" class= "edit_btn" id = "editContact"> Update </a>
+                                        <a onclick = "movingContactInfo(`+jsonObject[i].id+`); openModal();" class= "edit_btn" id = "editContact"> Update </a>
                                 </div>
                         </div>
                 </div>`
@@ -698,4 +691,100 @@ function clearTabs(parent) {
     console.log(p);
     parent.remove(p);
 p.innerHTML = "";
+}
+
+function openModal()
+{
+	document.getElementById('myModal').style.display='block';
+}
+
+function movingContactInfo(contactId)
+{
+        var userToDelete = {
+                id: contactId
+        };
+
+        var deletedUser = JSON.stringify(userToDelete);
+
+        var url = urlBase + '/LAMPAPI/Delete.' + extension;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+        try
+        {
+                xhr.onreadystatechange = function()
+                {
+                        if (this.readyState == 4 && this.status == 200)
+                        {
+                                ;
+                        }
+                };
+                xhr.send(deletedUser);
+        }
+        catch(err)
+        {
+                window.alert("ID is invalid");
+        }
+}
+
+function gettingContactInfo()
+{
+        firstName = "";
+        lastName = "";
+        fullName = "";
+        var emailaddress = "";
+        var phonenumber = "";
+
+
+        firstName = document.getElementById("change_First_Name").value;
+        lastName = document.getElementById("change_Last_Name").value;
+        emailaddress = document.getElementById("change_Email_Name").value;
+        phonenumber = document.getElementById("change_Phone_Name").value;
+
+        var url = urlBase + '/LAMPAPI/Add.' + extension;
+
+        userId = localStorage.getItem("loginId");
+        var createContact = {
+                owner_id: userId,
+                first_name: firstName,
+                last_name: lastName,
+                email: emailaddress,
+                phone: phonenumber
+        };
+
+        if (createContact.id == "" || createContact.username == "" || createContact.password == "" || createContact.email == "" || createContact.phone == "")
+        {
+                window.alert("Please fill all required fields.");
+                return;
+        }
+
+        var newContact = JSON.stringify(createContact);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+
+        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+        try
+        {
+                xhr.onreadystatechange = function()
+                {
+                        if (this.readyState == 4 && this.status == 200)
+                        {
+                                if (xhr.response != "")
+                                {
+                                        window.alert("A problem occured with updating the contact. Please check the information provided.");
+                                        return;
+                                }
+                        window.alert("Contact has been updated!");
+                        return;
+                        }
+                };
+                xhr.send(newContact);
+        }
+        catch(err)
+        {
+            window.alert("Please check the information that has been entered.");
+        }
+
 }
